@@ -18,3 +18,5 @@ require("plugin-config.telescope")
 require("plugin-config.dashboard")
 -- project
 require("plugin-config.project")
+--cmp
+require("plugin-config.cmp")

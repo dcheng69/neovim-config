@@ -61,8 +61,6 @@ vim.o.timeoutlen = 300
 -- display the split window to the right and down
 vim.o.splitbelow = true
 vim.o.splitright = true
--- do not select the auto complete automatically
-vim.g.completeopt = "menu,menuone,noselect,noinsert"
 -- display schema
 vim.o.background = "dark"
 vim.o.termguicolors = true
@@ -81,3 +79,7 @@ vim.o.pumheight = 10
 vim.o.showtabline = 2
 -- turnoff the status line because we use plugins
 vim.o.showmode = false
+-- mostly just for cmp
+vim.o.completeopt = "menuone,noselect"
+-- do not select the auto complete automatically
+-- vim.g.completeopt = "menu,menuone,noselect,noinsert"
