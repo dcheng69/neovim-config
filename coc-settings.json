@@ -1,0 +1,21 @@
+{
+  "snippets.ultisnips.pythonPrompt": false,
+  "python.pythonPath": "/usr/local/bin/coc-pyright-anaconda.sh",
+
+    "languageserver": {
+    "ccls": {
+      "command": "ccls",
+      "filetypes": ["c", "cc", "cpp", "c++"],
+      "rootPatterns": [".git/", ".ccls", ".ccls-root"],
+      "initializationOptions": {
+        "cache": {
+          "directory": ".ccls-cache"
+        },
+        "client": {
+          "snippetSupport": true
+        }
+      }
+    }
+  }
+}
+
