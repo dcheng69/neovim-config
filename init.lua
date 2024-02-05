@@ -18,5 +18,5 @@ require("plugin-config.telescope")
 require("plugin-config.dashboard")
 -- project
 require("plugin-config.project")
---coc.nvim
-require("plugin-config.coc-nvim")
+--cmp
+require("plugin-config.cmp")
