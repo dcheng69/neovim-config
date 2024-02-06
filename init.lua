@@ -20,3 +20,6 @@ require("plugin-config.dashboard")
 require("plugin-config.project")
 --cmp
 require("plugin-config.cmp")
+-- lsp
+require("lsp-config")
+

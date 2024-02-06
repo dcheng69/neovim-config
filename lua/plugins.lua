@@ -97,10 +97,10 @@ packer.startup({
     use("preservim/tagbar")
     -------------------------------------------------------
     ------------------nvim-autopairs-----------------------
-    use {
-        "windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup {} end
-    }
+    -- use {
+    --     "windwp/nvim-autopairs",
+    --     config = function() require("nvim-autopairs").setup {} end
+    -- }
     -------------------------------------------------------
     ------------------nvim-autopairs-----------------------
     use {"babaybus/DoxygenToolkit.vim"}
@@ -128,10 +128,20 @@ packer.startup({
     use {"hrsh7th/cmp-path"} -- path completions
     use {"hrsh7th/cmp-cmdline"} -- cmdline completions
     use {"saadparwaiz1/cmp_luasnip"} -- snippet completions
+    use {"hrsh7th/cmp-nvim-lsp"} -- lsp completions
+    use {"hrsh7th/cmp-nvim-lua"} -- lua completions
+    -------------------------------------------------------
 
     ---------------snippets plugins------------------------
     use {"L3MON4D3/LuaSnip"} -- snippet engine
     use {"rafamadriz/friendly-snippets"} -- a bunch of snippets to use
+    -------------------------------------------------------
+
+    ------------------LSP plugins--------------------------
+    use {"neovim/nvim-lspconfig"} -- enable LSP
+    use {"williamboman/mason.nvim"} -- simple to use language server installler
+    use {"williamboman/mason-lspconfig.nvim"} -- simple to use language server installler
+    use {"jose-elias-alvarez/null-ls.nvim"} -- LSP diagnostics and code actions
     -------------------------------------------------------
 
     -------------------------------------------------------
