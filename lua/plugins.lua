@@ -97,10 +97,10 @@ packer.startup({
     use("preservim/tagbar")
     -------------------------------------------------------
     ------------------nvim-autopairs-----------------------
-    -- use {
-    --     "windwp/nvim-autopairs",
-    --     config = function() require("nvim-autopairs").setup {} end
-    -- }
+    use {
+        "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end
+    }
     -------------------------------------------------------
     ------------------nvim-autopairs-----------------------
     use {"babaybus/DoxygenToolkit.vim"}

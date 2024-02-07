@@ -21,8 +21,8 @@ vim.bo.tabstop = 4
 vim.o.softtabstop = 4
 vim.o.shiftround = true
 -- length when using "<" ">" to move the line left and right
-vim.o.shiftwidth = 1
-vim.bo.shiftwidth = 1
+vim.o.shiftwidth = 4
+vim.bo.shiftwidth = 4
 -- use the space to substitute tab
 vim.o.expandtab = true
 vim.bo.expandtab = true
