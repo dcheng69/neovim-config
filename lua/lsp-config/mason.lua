@@ -4,7 +4,6 @@ local servers = {
  "jsonls",
  "clangd",
  "bashls",
- "asm_lsp",
 }
 
 local settings = {

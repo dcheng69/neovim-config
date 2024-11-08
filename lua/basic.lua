@@ -14,7 +14,7 @@ vim.wo.cursorline = true
 -- show the indication icon on the left
 vim.wo.signcolumn = "yes"
 -- reference line on the right, indicate the line is too long
-vim.wo.colorcolumn = "100"
+vim.wo.colorcolumn = "120"
 -- set tab equals 4 spaces
 vim.o.tabstop = 4
 vim.bo.tabstop = 4

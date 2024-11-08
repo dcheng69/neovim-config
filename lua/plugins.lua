@@ -63,7 +63,7 @@ packer.startup({
     })
     -- bufferline
     use({
-        "akinsho/bufferline.nvim",
+        "akinsho/bufferline.nvim", branch = 'v4.5.2',
         requires = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" },
     })
     -- lualine
@@ -142,6 +142,10 @@ packer.startup({
     use {"williamboman/mason.nvim"} -- simple to use language server installler
     use {"williamboman/mason-lspconfig.nvim"} -- simple to use language server installler
     use {"jose-elias-alvarez/null-ls.nvim"} -- LSP diagnostics and code actions
+    -------------------------------------------------------
+
+    ------------------Language Tool--------------------------
+    use {"vigoux/LanguageTool.nvim"} -- enable LSP
     -------------------------------------------------------
 
     -------------------------------------------------------

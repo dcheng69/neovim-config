@@ -1,4 +1,6 @@
-local colorscheme = "OceanicNext"
+-- local colorscheme = "OceanicNext"
+-- local colorscheme = "vim-one"
+local colorscheme = "tokyonight"
 -- default
 -- tokyonight
 -- darkblue
