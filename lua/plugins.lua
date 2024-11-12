@@ -63,7 +63,8 @@ packer.startup({
     })
     -- bufferline
     use({
-        "akinsho/bufferline.nvim", branch = 'v4.5.2',
+        --"akinsho/bufferline.nvim", branch = 'v4.5.2',
+        "akinsho/bufferline.nvim",
         requires = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" },
     })
     -- lualine

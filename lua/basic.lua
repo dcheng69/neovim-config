@@ -83,3 +83,5 @@ vim.o.showmode = false
 vim.o.completeopt = "menuone,noselect"
 -- do not select the auto complete automatically
 -- vim.g.completeopt = "menu,menuone,noselect,noinsert"
+-- clipbaord, requires xclip plugin
+vim.o.clipboard='unnamedplus'
