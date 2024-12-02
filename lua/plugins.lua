@@ -144,9 +144,14 @@ packer.startup({
     use {"williamboman/mason-lspconfig.nvim"} -- simple to use language server installler
     use {"jose-elias-alvarez/null-ls.nvim"} -- LSP diagnostics and code actions
     -------------------------------------------------------
-
     ------------------Language Tool--------------------------
     use {"vigoux/LanguageTool.nvim"} -- enable LSP
+    -------------------------------------------------------
+    ------------------Indentation Tool--------------------------
+    use {
+        "lukas-reineke/indent-blankline.nvim",
+        config = function() require("ibl").setup {} end
+    }
     -------------------------------------------------------
 
     -------------------------------------------------------
