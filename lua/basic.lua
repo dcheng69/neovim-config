@@ -85,3 +85,21 @@ vim.o.completeopt = "menuone,noselect"
 -- vim.g.completeopt = "menu,menuone,noselect,noinsert"
 -- clipbaord, requires xclip plugin
 vim.o.clipboard='unnamedplus'
+
+-- Function to set indentation for .h files
+local function set_header_indentation()
+  vim.bo.shiftwidth = 2   -- Set the shift width to 4 spaces
+  vim.bo.tabstop = 2      -- Set the tab stop to 4 spaces
+  vim.bo.expandtab = true -- Use spaces instead of tabs
+end
+
+-- Autocommand to apply settings to .h files
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "cpp",
+  callback = function()
+    if vim.fn.expand("%:e") == "h" then
+      set_header_indentation()
+    end
+  end,
+})
+
