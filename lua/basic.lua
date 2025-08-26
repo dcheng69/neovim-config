@@ -14,7 +14,7 @@ vim.wo.cursorline = true
 -- show the indication icon on the left
 vim.wo.signcolumn = "yes"
 -- reference line on the right, indicate the line is too long
-vim.wo.colorcolumn = "120"
+vim.wo.colorcolumn = "80"
 -- set tab equals 4 spaces
 vim.o.tabstop = 4
 vim.bo.tabstop = 4
@@ -85,6 +85,9 @@ vim.o.completeopt = "menuone,noselect"
 -- vim.g.completeopt = "menu,menuone,noselect,noinsert"
 -- clipbaord, requires xclip plugin
 vim.o.clipboard='unnamedplus'
+
+-- Turn off LSP log
+-- vim.lsp.set_log_level("off")
 
 -- Function to set indentation for .h files
 local function set_header_indentation()

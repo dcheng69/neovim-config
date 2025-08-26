@@ -142,7 +142,7 @@ packer.startup({
     use {"neovim/nvim-lspconfig"} -- enable LSP
     use {"williamboman/mason.nvim"} -- simple to use language server installler
     use {"williamboman/mason-lspconfig.nvim"} -- simple to use language server installler
-    use {"jose-elias-alvarez/null-ls.nvim"} -- LSP diagnostics and code actions
+    use "nvimtools/none-ls.nvim" -- LSP diagnostics and code actions community fork version
     -------------------------------------------------------
     ------------------Language Tool--------------------------
     use {"vigoux/LanguageTool.nvim"} -- enable LSP
