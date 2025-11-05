@@ -1,0 +1,126 @@
+// Place your key bindings in this file to override the defaults
+[
+  {
+    "key": "s",
+    "command": "-",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": "s v",
+    "command": "vscode-neovim.send",
+    "args": ":vsp<CR>",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": "s h",
+    "command": "vscode-neovim.send",
+    "args": ":sp<CR>",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": "s c",
+    "command": "vscode-neovim.send",
+    "args": "<C-w>c",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": "s o",
+    "command": "vscode-neovim.send",
+    "args": "<C-w>o",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": "alt+h",
+    "command": "vscode-neovim.send",
+    "args": "<C-w>h",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": "alt+j",
+    "command": "vscode-neovim.send",
+    "args": "<C-w>j",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": "alt+k",
+    "command": "vscode-neovim.send",
+    "args": "<C-w>k",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": "alt+l",
+    "command": "vscode-neovim.send",
+    "args": "<C-w>l",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.previousEditor",
+    "when": "editorTextFocus && neovim.mode == 'normal'",
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.nextEditor",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": "s =",
+    "command": "vscode-neovim.send",
+    "args": "<C-w>=",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "vscode-neovim.send",
+    "args": "4j",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "vscode-neovim.send",
+    "args": "4k",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": "ctrl+u",
+    "command": "vscode-neovim.send",
+    "args": "9k",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": "ctrl+d",
+    "command": "vscode-neovim.send",
+    "args": "9j",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": "q",
+    "command": "vscode-neovim.send",
+    "args": ":q<CR>",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": "q q",
+    "command": "vscode-neovim.send",
+    "args": ":q!<CR>",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": "shift+q",
+    "command": "vscode-neovim.send",
+    "args": ":qa!<CR>",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "vscode-neovim.send",
+    "args": "<ESC>I",
+    "when": "editorTextFocus && neovim.mode == 'insert'"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "vscode-neovim.send",
+    "args": "<ESC>A",
+    "when": "editorTextFocus && neovim.mode == 'insert'"
+  }
+]
