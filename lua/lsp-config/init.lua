@@ -1,8 +1,5 @@
--- This init.lua will help to manage the lsp config folders
-local status_ok, _ = pcall(require, "lspconfig")
-if not status_ok then
-  return
-end
+-- lsp-config/init.lua
+-- Central entry point for LSP configuration (Neovim 0.11+)
 
 require "lsp-config.mason"
 require("lsp-config.handlers").setup()

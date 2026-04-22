@@ -56,7 +56,6 @@ packer.startup({
     -------------------------------------------------------
     --------------------- plugins--------------------------
     --- nvim-tree
-    -- use({ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" }) --> deprecated
     use ({
         "nvim-tree/nvim-tree.lua",
         requires = {"nvim-tree/nvim-web-devicons"}
@@ -123,6 +122,7 @@ packer.startup({
     use {"nvim-lua/popup.nvim"} -- An implementation of the Popup API from vim in Neovim
     use {"nvim-lua/plenary.nvim"} -- --Useful lua functions used by lots of plugins
     -------------------------------------------------------
+    ---
     --------------------cmp plugins------------------------
     use {"hrsh7th/nvim-cmp"} -- The completion plugin
     use {"hrsh7th/cmp-buffer"} -- buffer completions
