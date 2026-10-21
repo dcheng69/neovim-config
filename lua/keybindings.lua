@@ -17,8 +17,8 @@ map("n", "sv", ":vsp<CR>", opt)
 map("n", "sh", ":sp<CR>", opt)
 -- close the current window
 map("n", "sc", "<C-w>c", opt)
--- close all the other windows
-map("n", "so", "<C-w>o", opt)
+-- close all the other buffers (Zed: pane::CloseOtherItems), <C-w>o still closes other windows
+map("n", "so", ":BufferLineCloseOthers<CR>", opt)
 -- Alt + hjkl to jump to different windows
 map("n", "<A-h>", "<C-w>h", opt)
 map("n", "<A-j>", "<C-w>j", opt)
@@ -49,15 +49,15 @@ map("v", "K", ":move '<-2<CR>gv-gv", opt)
 -- reconfigure the behaviour of "ve" to not yank but to keep the old one
 map("v", "P", "_dP", opt)
 -- scrolling
-map("n", "<C-j>", "4j", opt)
-map("n", "<C-k>", "4k", opt)
+map("n", "<C-j>", "5j", opt)
+map("n", "<C-k>", "5k", opt)
 map("n", "<C-u>", "9k", opt)
 map("n", "<C-d>", "9j", opt)
 -- do not copy when paste in visual mode
 map("v", "p", '"_dP', opt)
 -- exit
-map("n", "q", ":q<CR>", opt)
-map("n", "qq", ":q!<CR>", opt)
+-- close the current buffer (Zed: pane::CloseActiveItem), a single q still records macros
+map("n", "qq", ":Bdelete<CR>", opt)
 map("n", "Q", ":qa!<CR>", opt)
 -- insert mode
 map("i", "<C-h>", "<ESC>I", opt)
@@ -79,7 +79,6 @@ map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
 map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
 -- close
 --"moll/vim-bbye"
-map("n", "<C-w>", ":Bdelete!<CR>", opt)
 map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
 map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt)
 map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
@@ -116,6 +115,10 @@ map("v", "<leader>mp", ":MarkdownPreview<CR>", opt)
 map("n", "<leader>mc", ":MarkdownPreviewStop<CR>", opt)
 map("i", "<leader>mc", ":MarkdownPreviewStop<CR>", opt)
 map("v", "<leader>mc", ":MarkdownPreviewStop<CR>", opt)
+
+-- Zed tasks from .zed/tasks.json (Zed: task::Spawn / task::Rerun)
+map("n", "<A-T>", ":ZedTask<CR>", opt)
+map("n", "<A-t>", ":ZedTaskRerun<CR>", opt)
 
 -- Tagbar
 map("n", "<F2>", ":Tagbar<CR>", opt)

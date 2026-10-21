@@ -29,5 +29,7 @@ else
     require("plugin-config.cmp")
     -- lsp
     require("lsp-config")
+    -- run the tasks defined in .zed/tasks.json
+    require("zed-project").setup()
 end
 
