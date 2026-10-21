@@ -3,8 +3,10 @@ local M = {}
 -- TODO: backfill this to template
 M.setup = function()
   local config = {
-    -- disable virtual text
-    virtual_text = false,
+    -- short message at the end of the other lines, errors only to keep clang-tidy warnings quiet
+    virtual_text = { current_line = false, severity = vim.diagnostic.severity.ERROR, spacing = 2 },
+    -- full message below the cursor line, <leader>d shows them below every line
+    virtual_lines = { current_line = true },
     -- show signs
     signs = {
       text = {
@@ -14,7 +16,7 @@ M.setup = function()
         [vim.diagnostic.severity.INFO] = "",
       },
     },
-    update_in_insert = true,
+    update_in_insert = false,
     underline = true,
     severity_sort = true,
     float = {
@@ -28,6 +30,15 @@ M.setup = function()
   }
 
   vim.diagnostic.config(config)
+end
+
+-- switch between showing the diagnostic lines for the cursor line only and for every line
+M.toggle_diagnostic_lines = function()
+  local cursor_only = vim.diagnostic.config().virtual_lines.current_line
+  vim.diagnostic.config({
+    virtual_lines = { current_line = not cursor_only },
+    virtual_text = not cursor_only and { current_line = false, severity = vim.diagnostic.severity.ERROR, spacing = 2 },
+  })
 end
 
 local function lsp_highlight_document(client, bufnr)
@@ -62,6 +73,7 @@ local function lsp_keymaps(bufnr)
   )
   vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.jump({ count = 1, float = true })<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>d", '<cmd>lua require("lsp-config.handlers").toggle_diagnostic_lines()<CR>', opts)
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format()' ]]
 end
 
