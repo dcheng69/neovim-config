@@ -83,9 +83,7 @@ db.setup({
         },
 
         footer = {
-            "Don't panic!",
-            "",
-            "Enjoy Coding!",
+            "Another day, another dollar!",
         }
     }
 })
