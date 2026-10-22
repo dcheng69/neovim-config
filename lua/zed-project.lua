@@ -66,8 +66,30 @@ M.lsp_binary = function(server)
 end
 
 local last_task
+-- terminal buffer of each task, keyed by its label
+local terminals = {}
+-- the bottom panel window all tasks run in, like the terminal panel of an IDE
+local panel_win
+local PANEL_HEIGHT = 15
 
--- run a task in a terminal split, with the same environment variables Zed provides
+local function focus_panel()
+  if panel_win and vim.api.nvim_win_is_valid(panel_win) then
+    vim.api.nvim_set_current_win(panel_win)
+  else
+    vim.cmd("botright " .. PANEL_HEIGHT .. "split")
+    panel_win = vim.api.nvim_get_current_win()
+    vim.wo[panel_win].winfixheight = true
+  end
+end
+
+-- cycling the code tabs from the panel switches them in the code window instead
+local function map_tab_cycling(buf)
+  for lhs, cmd in pairs({ ["<C-h>"] = "BufferLineCyclePrev", ["<C-l>"] = "BufferLineCycleNext" }) do
+    vim.keymap.set("n", lhs, "<C-w>p<Cmd>" .. cmd .. "<CR>", { buffer = buf, silent = true })
+  end
+end
+
+-- run a task in the bottom panel, with the same environment variables Zed provides
 M.run = function(task)
   local root = M.root()
   local file = vim.api.nvim_buf_get_name(0)
@@ -91,8 +113,21 @@ M.run = function(task)
   local cwd = task.cwd and task.cwd:gsub("%$ZED_WORKTREE_ROOT", root) or root
 
   last_task = task
-  vim.cmd("botright new")
+  focus_panel()
+  -- unlisted, so the task terminals don't show up among the code tabs
+  local buf = vim.api.nvim_create_buf(false, false)
+  vim.wo[panel_win].winfixbuf = false
+  vim.api.nvim_win_set_buf(panel_win, buf)
+  vim.wo[panel_win].winfixbuf = true
+  -- like Zed, rerunning a task restarts it in place of its previous terminal unless "use_new_terminal" is set
+  local key = task.label or command
+  local old_buf = terminals[key]
+  if not task.use_new_terminal and old_buf and vim.api.nvim_buf_is_valid(old_buf) then
+    vim.api.nvim_buf_delete(old_buf, { force = true })
+  end
   vim.fn.jobstart(command, { term = true, cwd = cwd, env = env })
+  map_tab_cycling(buf)
+  terminals[key] = buf
   vim.cmd("startinsert")
 end
 

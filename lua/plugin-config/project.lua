@@ -27,6 +27,20 @@ project.setup({
   },
 })
 
+-- open the file explorer when a project is opened from the Telescope projects list, like an IDE
+local project_core = require("project_nvim.project")
+local set_pwd = project_core.set_pwd
+project_core.set_pwd = function(dir, method)
+  local cd_successful = set_pwd(dir, method)
+  if cd_successful and method == "telescope" then
+    local tree_ok, tree = pcall(require, "nvim-tree.api")
+    if tree_ok and not tree.tree.is_visible() then
+      tree.tree.toggle({ path = dir, focus = false })
+    end
+  end
+  return cd_successful
+end
+
 local status_telescope, telescope = pcall(require, "telescope")
 if not status_telescope then
   vim.notify("telescope not found!")
