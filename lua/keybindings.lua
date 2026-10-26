@@ -85,9 +85,34 @@ map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
 
 -- Telescope
 -- search file
-map("n", "<C-p>", ":Telescope find_files<CR>", opt)
--- global search
-map("n", "<C-f>", ":Telescope live_grep<CR>", opt)
+-- both pickers behave like vscode: scoped to the git repo of the current buffer
+-- (cwd outside a repo), dotfiles included, .gitignore respected, filename shown first
+local function repo_root()
+  return vim.fs.root(0, ".git") or vim.fn.getcwd()
+end
+vim.keymap.set("n", "<C-p>", function()
+  require("telescope.builtin").find_files({
+    cwd = repo_root(),
+    find_command = { "rg", "--files", "--hidden", "--glob", "!.git/" },
+    path_display = { "filename_first" },
+  })
+end, opt)
+-- global search, prefilled with the selection in visual mode
+local function project_grep(default_text)
+  require("telescope.builtin").live_grep({
+    cwd = repo_root(),
+    additional_args = { "--hidden", "--glob", "!.git/" },
+    path_display = { "filename_first" },
+    default_text = default_text,
+  })
+end
+vim.keymap.set("n", "<C-f>", function() project_grep() end, opt)
+vim.keymap.set("v", "<C-f>", function()
+  local lines = vim.fn.getregion(vim.fn.getpos("v"), vim.fn.getpos("."), { type = vim.fn.mode() })
+  vim.api.nvim_feedkeys(vim.keycode("<Esc>"), "nx", false)
+  -- live_grep takes a regex, so escape the selection to match it literally
+  project_grep(vim.fn.escape(table.concat(lines, " "), "\\.^$*+?()[]{}|"))
+end, opt)
 -- Telescope list, insertmode keybindings
 pluginKeys.telescopeList = {
   i = {
